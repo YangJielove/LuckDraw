@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+<div class="img">
+    <div class="cover"></div>
+    <img src="img/index.jpg">
+    <div class="box">
+        <h1>2018年年度抽奖活动</h1>
+    </div>
+    <ul id="myTab" class="luck_draw_style">
+        <li class="active">
+            <button href="#a" data-toggle="tab" class="a">特等奖</button>
+        </li>
+        <li>
+            <button href="#b" data-toggle="tab" class="b">幸运奖</button>
+        </li>
+        <li>
+            <button href="#c" data-toggle="tab" class="c">一等奖</button>
+        </li>
+        <li>
+            <button href="#d" data-toggle="tab" class="d">二等奖</button>
+        </li>
+        <li>
+            <button href="#e" data-toggle="tab" class="e">三等奖</button>
+        </li>
+        <li>
+            <button href="#f" data-toggle="tab" class="f">四等奖</button>
+        </li>
+    </ul>
+    <div id="myTabContent" class="tab-content ">
+        <div class="tab-pane fade in active" id="a">
+            <div class="set_one first_prize">
+                <div class="first_prize_text">
+                    <text> 《《</text>
+                    特等奖(1名)
+                    <text> 》》</text>
+                </div>
+            </div>
+            <div class="list">
+                <div class="one">
+                    <div class="set_one_s">特等奖(1名):</div>
+                    <text class="one_name">
+                    </text>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="b">
+            <div class="set_two first_prize">
+                <div class="first_prize_text">
+                    <text> 《《</text>
+                    幸运奖(2名)
+                    <text> 》》</text>
+                </div>
+            </div>
+            <div class="list">
+                <div class="one">
+                    <div class="set_two_s">幸运奖(2名):</div>
+                    <text class="two_name">
+                    </text>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="c">
+            <div class="set_three first_prize">
+                <div class="first_prize_text">
+                    <text> 《《</text>
+                    一等奖(3名)
+                    <text> 》》</text>
+                </div>
+            </div>
+            <div class="list">
+                <div class="one">
+                    <div class="set_three_s">一等奖(3名):</div>
+                    <text class="three_name">
+                    </text>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="d">
+            <div class="set_four first_prize">
+                <div class="first_prize_text">
+                    <text> 《《</text>
+                    二等奖(10名)
+                    <text> 》》</text>
+                </div>
+            </div>
+            <div class="list">
+                <div class="one">
+                    <div class="set_four_s">二等奖(10名):</div>
+                    <text class="four_name">
+                    </text>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="e">
+            <div class="set_five first_prize">
+                <div class="first_prize_text">
+                    <text> 《《</text>
+                    三等奖(25名)
+                    <text> 》》</text>
+                </div>
+            </div>
+            <div class="list">
+                <div class="one">
+                    <div class="set_five_s">三等奖(25名):</div>
+                    <text class="five_name">
+                    </text>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="f">
+            <div class="set_six first_prize">
+                <div class="first_prize_text">
+                    <text> 《《</text>
+                    四等奖(80名)
+                    <text> 》》</text>
+                </div>
+            </div>
+            <div class="list">
+                <div class="one">
+                    <div class="set_six_s">四等奖(80名):</div>
+                    <text class="six_name">
+                    </text>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="text" class="input" name="num" value="xxx,xxx,xxx,xxx" disabled="disabled">
+    <bottom id="bottom">抽奖</bottom>
+    <bottom id="end">暂停</bottom>
+    <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myTitle">修改标题</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">设置总人数</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myNum">中奖名单</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#mySetNum">修改各类型的中奖人数</button>
+    </div>
+    <!-- 模态框（Title） -->
+    <div class="modal fade" id="myTitle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">设置标题（默认是：2018年年度抽奖活动）</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" id='title' placeholder="请输入标题">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id='setUTitle' type="button" class="btn btn-primary">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">设置人数</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="number" class="form-control" id="n" placeholder="请输入人数">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id='setUp' type="button" class="btn btn-primary">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <!-- 模态框（Num） -->
+    <div class="modal fade" id="myNum" tabindex="-1" role="dialog" aria-labelledby="myNum" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">中奖名单</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="table_box">
+                        <div class="data_one">特等奖名单</div>
+                        <div class="data_one_box">
+                        </div>
+                    </div>
+                    <div class="table_box">
+                        <div class="data_one">幸运奖名单</div>
+                        <div class="data_two_box">
+                        </div>
+                    </div>
+                    <div class="table_box">
+                        <div class="data_one">一等奖名单</div>
+                        <div class="data_three_box">
+                        </div>
+                    </div>
+                    <div class="table_box">
+                        <div class="data_one">二等奖奖名单</div>
+                        <div class="data_four_box">
+                        </div>
+                    </div>
+                    <div class="table_box">
+                        <div class="data_one">三等奖名单</div>
+                        <div class="data_five_box">
+                        </div>
+                    </div>
+                    <div class="table_box">
+                        <div class="data_one">四等奖名单</div>
+                        <div class="data_six_box">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <!-- 模态框（mySetNum） -->
+    <div class="modal fade" id="mySetNum" tabindex="-1" role="dialog" aria-labelledby="mySetNum" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">设置各类型的中奖人数</h4>
+                </div>
+                <div class="modal-body">
+                    特等奖：<input type="number" class="form-control set" id="set_one" placeholder="请输入人数">
+                    幸运奖：<input type="number" class="form-control set" id="set_two" placeholder="请输入人数">
+                    一等奖：<input type="number" class="form-control set" id="set_three" placeholder="请输入人数">
+                    二等地奖：<input type="number" class="form-control set" id="set_four" placeholder="请输入人数">
+                    三等奖：<input type="number" class="form-control set" id="set_five" placeholder="请输入人数">
+                    四等奖：<input type="number" class="form-control set" id="set_six" placeholder="请输入人数">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id='set_num' type="button" class="btn btn-primary">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+<script src="js/style.js"></script>
+</body>
+</html>
