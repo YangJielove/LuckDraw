@@ -11,9 +11,9 @@ $(document).ready(function () {
     var div1 = '<div class="name_nu">';
     var div3 = '<div class="data_one_css">';
     var div2 = '</div>';
-    $.cookie('style', 1); //默认是特等奖
-    console.log('类型', $.cookie('style'));
-    var title = $.cookie('title');
+    localStorage.setItem('style', 1); //默认是特等奖
+    console.log('类型', localStorage.getItem('style'));
+    var title = localStorage.getItem('title');
     if (title) {
         console.log('title', title);
         $('h1').html('<h1>' + title + '</h1>');
@@ -22,12 +22,12 @@ $(document).ready(function () {
     //===================设置中奖人数 start=====================//
 
 
-    var cookie_set_one = $.cookie('set_one');
-    var cookie_set_two = $.cookie('set_two');
-    var cookie_set_three = $.cookie('set_three');
-    var cookie_set_four = $.cookie('set_four');
-    var cookie_set_five = $.cookie('set_five');
-    var cookie_set_six = $.cookie('set_six');
+    var cookie_set_one   = localStorage.getItem('set_one');
+    var cookie_set_two   = localStorage.getItem('set_two');
+    var cookie_set_three = localStorage.getItem('set_three');
+    var cookie_set_four  = localStorage.getItem('set_four');
+    var cookie_set_five  = localStorage.getItem('set_five');
+    var cookie_set_six   = localStorage.getItem('set_six');
 
     if(cookie_set_one){
         $('.set_one_s').html('<div>' + '特等奖(' + cookie_set_one + '名)' + '</div>');
@@ -108,12 +108,12 @@ $(document).ready(function () {
         } else if (!set_six) {
             alert('四等奖不能为空');
         } else {
-            $.cookie('set_one', set_one);
-            $.cookie('set_two', set_two);
-            $.cookie('set_three', set_three);
-            $.cookie('set_four', set_four);
-            $.cookie('set_five', set_five);
-            $.cookie('set_six', set_six);
+            localStorage.setItem('set_one', set_one);
+            localStorage.setItem('set_two', set_two);
+            localStorage.setItem('set_three', set_three);
+            localStorage.setItem('set_four', set_four);
+            localStorage.setItem('set_five', set_five);
+            localStorage.setItem('set_six', set_six);
 
             $('.set_one_s').html('<div>' + '特等奖(' + set_one + '名)' + '</div>');
             $('.set_two_s').html('<div>' + '幸运奖(' + set_two + '名)' + '</div>');
@@ -152,7 +152,7 @@ $(document).ready(function () {
                 '                    四等奖(' + set_six + '名)\n' +
                 '                    <text> 》》</text>\n' +
                 '                </div>');
-            console.log($.cookie('set_one'), $.cookie('set_two'), $.cookie('set_three'), $.cookie('set_four'), $.cookie('set_five'), $.cookie('set_six'));
+            console.log(localStorage.getItem('set_one'), localStorage.getItem('set_two'), localStorage.getItem('set_three'), localStorage.getItem('set_four'), localStorage.getItem('set_five'), localStorage.getItem('set_six'));
             $('#mySetNum').modal('hide');//关闭模糊弹窗
 
         }
@@ -164,34 +164,34 @@ $(document).ready(function () {
     //========获取用户是点击是什么类型的抽奖 start ==========//
 
     $(".a").on('click', function () {
-        $.cookie('style', 1);
+        localStorage.setItem('style', 1);
         $("input[name='num']").val('xxx,xxx,xxx,xxx');
-        console.log('cookie', $.cookie('style'));
+        console.log('cookie', localStorage.getItem('style'));
     })
     $(".b").on('click', function () {
-        $.cookie('style', 2);
+        localStorage.setItem('style', 2);
         $("input[name='num']").val('xxx,xxx,xxx,xxx');
-        console.log('cookie', $.cookie('style'));
+        console.log('cookie', localStorage.getItem('style'));
     })
     $(".c").on('click', function () {
-        $.cookie('style', 3);
+        localStorage.setItem('style', 3);
         $("input[name='num']").val('xxx,xxx,xxx,xxx');
-        console.log('cookie', $.cookie('style'));
+        console.log('cookie', localStorage.getItem('style'));
     })
     $(".d").on('click', function () {
-        $.cookie('style', 4);
+        localStorage.setItem('style', 4);
         $("input[name='num']").val('xxx,xxx,xxx,xxx');
-        console.log('cookie', $.cookie('style'));
+        console.log('cookie', localStorage.getItem('style'));
     })
     $(".e").on('click', function () {
-        $.cookie('style', 5);
+        localStorage.setItem('style', 5);
         $("input[name='num']").val('xxx,xxx,xxx,xxx');
-        console.log('cookie', $.cookie('style'));
+        console.log('cookie', localStorage.getItem('style'));
     })
     $(".f").on('click', function () {
-        $.cookie('style', 6);
+        localStorage.setItem('style', 6);
         $("input[name='num']").val('xxx,xxx,xxx,xxx');
-        console.log('cookie', $.cookie('style'));
+        console.log('cookie', localStorage.getItem('style'));
     })
     //========获取用户是点击是什么类型的抽奖 end  ===========//
 
@@ -201,7 +201,7 @@ $(document).ready(function () {
         let title = $('#title').val();
         if (title) {
             $('h1').html('<h1>' + title + '</h1>');
-            $.cookie('title', title);
+            localStorage.setItem('title', title);
             $('#myTitle').modal('hide');//关闭模糊弹窗
 
         } else {
@@ -224,38 +224,38 @@ $(document).ready(function () {
     //============判断之前是否有中奖名单有就输出名单 start ===================//
     // console.log('$.cookie(\'data_one\')',encode($.cookie('data_one')));
 
-    if ($.cookie('data_one')) {
-        let data = encode($.cookie('data_one'));
+    if (localStorage.getItem('data_one')) {
+        let data = encode(localStorage.getItem('data_one'));
         $.each(data, function (i, v) {
             $('.data_one_box').append(div3 + v + div2);
         })
     }
-    if ($.cookie('data_two')) {
-        let data = encode($.cookie('data_two'));
+    if (localStorage.getItem('data_two')) {
+        let data = encode(localStorage.getItem('data_two'));
         $.each(data, function (i, v) {
             $('.data_two_box').append(div3 + v + div2);
         })
     }
-    if ($.cookie('data_three')) {
-        let data = encode($.cookie('data_three'));
+    if (localStorage.getItem('data_three')) {
+        let data = encode(localStorage.getItem('data_three'));
         $.each(data, function (i, v) {
             $('.data_three_box').append(div3 + v + div2);
         })
     }
-    if ($.cookie('data_four')) {
-        let data = encode($.cookie('data_four'));
+    if (localStorage.getItem('data_four')) {
+        let data = encode(localStorage.getItem('data_four'));
         $.each(data, function (i, v) {
             $('.data_four_box').append(div3 + v + div2);
         })
     }
-    if ($.cookie('data_five')) {
-        let data = encode($.cookie('data_five'));
+    if (localStorage.getItem('data_five')) {
+        let data = encode(localStorage.getItem('data_five'));
         $.each(data, function (i, v) {
             $('.data_five_box').append(div3 + v + div2);
         })
     }
-    if ($.cookie('data_six')) {
-        let data = encode($.cookie('data_six'));
+    if (localStorage.getItem('data_six')) {
+        let data = encode(localStorage.getItem('data_six'));
         $.each(data, function (i, v) {
             $('.data_six_box').append(div3 + v + div2);
         })
@@ -274,23 +274,23 @@ $(document).ready(function () {
             for (let i = 0; i < n; i++) {//获取人数
                 test.push(i);
             }
-            if ($.cookie('data_one')) {
-                $.cookie('data_one', null);
+            if (localStorage.getItem('data_one')) {
+                localStorage.setItem('data_one', null);
             }
-            if ($.cookie('data_two')) {
-                $.cookie('data_two', null);
+            if (localStorage.getItem('data_two')) {
+                localStorage.setItem('data_two', null);
             }
-            if ($.cookie('data_three')) {
-                $.cookie('data_three', null);
+            if (localStorage.getItem('data_three')) {
+                localStorage.setItem('data_three', null);
             }
-            if ($.cookie('data_four')) {
-                $.cookie('data_four', null);
+            if (localStorage.getItem('data_four')) {
+                localStorage.setItem('data_four', null);
             }
-            if ($.cookie('data_five')) {
-                $.cookie('data_five', null);
+            if (localStorage.getItem('data_five')) {
+                localStorage.setItem('data_five', null);
             }
-            if ($.cookie('data_six')) {
-                $.cookie('data_six', null);
+            if (localStorage.getItem('data_six')) {
+                localStorage.setItem('data_six', null);
             }
             $('.data_one_box').empty();
             $('.data_two_box').empty();
@@ -308,47 +308,48 @@ $(document).ready(function () {
     //================= 抽奖start =======================//
     $("#bottom").on('click', (function () {
         conduct = false;
-        if (style_start_num.indexOf($.cookie('style')) == -1 && test.length != 0) {
-            if ($.cookie('style') == 1) {
-                if (($.cookie('set_one'))) {
-                    style_start = $.cookie('set_one');
+        console.log(localStorage.getItem('style'))
+        if (style_start_num.indexOf(localStorage.getItem('style')) == -1 && test.length != 0) {
+            if (localStorage.getItem('style') == 1) {
+                if ((localStorage.getItem('set_one'))) {
+                    style_start = localStorage.getItem('set_one');
                 } else {
                     style_start = 1;
                 }
 
-            } else if ($.cookie('style') == 2) {
-                if (($.cookie('set_two'))) {
-                    style_start = $.cookie('set_two');
+            } else if (localStorage.getItem('style') == 2) {
+                if ((localStorage.getItem('set_two'))) {
+                    style_start = localStorage.getItem('set_two');
                 } else {
                     style_start = 2;
                 }
-            } else if ($.cookie('style') == 3) {
-                if (($.cookie('set_three'))) {
-                    style_start = $.cookie('set_three');
+            } else if (localStorage.getItem('style') == 3) {
+                if ((localStorage.getItem('set_three'))) {
+                    style_start = localStorage.getItem('set_three');
                 } else {
                     style_start = 3;
                 }
-            } else if ($.cookie('style') == 4) {
-                if (($.cookie('set_four'))) {
-                    style_start = $.cookie('set_four');
+            } else if (localStorage.getItem('style') == 4) {
+                if ((localStorage.getItem('set_four'))) {
+                    style_start = localStorage.getItem('set_four');
                 } else {
                     style_start = 10;
                 }
-            } else if ($.cookie('style') == 5) {
-                if (($.cookie('set_five'))) {
-                    style_start = $.cookie('set_five');
+            } else if (localStorage.getItem('style') == 5) {
+                if ((localStorage.getItem('set_five'))) {
+                    style_start =localStorage.getItem('set_five');
                 } else {
                     style_start = 25;
                 }
-            } else if ($.cookie('style') == 6) {
-                if (($.cookie('set_six'))) {
-                    style_start = $.cookie('set_six');
+            } else if (localStorage.getItem('style') == 6) {
+                if ((localStorage.getItem('set_six'))) {
+                    style_start = localStorage.getItem('set_six');
                 } else {
                     style_start = 80;
                 }
 
             }
-            style_start_num.push($.cookie('style'));
+            style_start_num.push(localStorage.getItem('style'));
             if (test.length >= style_start) {
                 $('#end').css("display", "block");
                 $('#bottom').css("display", "none");
@@ -382,50 +383,50 @@ $(document).ready(function () {
             $('#end').css("display", "none");
             $('#bottom').css("display", "block");
 
-            if ($.cookie('style') == 1) {
+            if (localStorage.getItem('style') == 1) {
                 console.log('datasssss', data);
-                $.cookie('data_one', decode(data));
+                localStorage.setItem('data_one', decode(data));
                 $.each(data, function (i, v) {
                     $('.data_one_box').append(div3 + v + div2);
                 })
-            } else if ($.cookie('style') == 2) {
-                $.cookie('data_two', decode(data));
+            } else if (localStorage.getItem('style') == 2) {
+                localStorage.setItem('data_two', decode(data));
                 $.each(data, function (i, v) {
                     $('.data_two_box').append(div3 + v + div2);
                 })
-            } else if ($.cookie('style') == 3) {
-                $.cookie('data_three', decode(data));
+            } else if (localStorage.getItem('style') == 3) {
+                localStorage.setItem('data_three', decode(data));
                 $.each(data, function (i, v) {
                     $('.data_three_box').append(div3 + v + div2);
                 })
-            } else if ($.cookie('style') == 4) {
-                $.cookie('data_four', decode(data));
+            } else if (localStorage.getItem('style') == 4) {
+                localStorage.setItem('data_four', decode(data));
                 $.each(data, function (i, v) {
                     $('.data_four_box').append(div3 + v + div2);
                 })
-            } else if ($.cookie('style') == 5) {
-                $.cookie('data_five', decode(data));
+            } else if (localStorage.getItem('style') == 5) {
+                localStorage.setItem('data_five', decode(data));
                 $.each(data, function (i, v) {
                     $('.data_five_box').append(div3 + v + div2);
                 })
-            } else if ($.cookie('style') == 6) {
-                $.cookie('data_six', decode(data));
+            } else if (localStorage.getItem('style') == 6) {
+                localStorage.setItem('data_six', decode(data));
                 $.each(data, function (i, v) {
                     $('.data_six_box').append(div3 + v + div2);
                 })
             }
             $.each(data, function (index, value) {
-                if ($.cookie('style') == 1) {
+                if (localStorage.getItem('style') == 1) {
                     $('.one_name').append(div1 + value + div2);
-                } else if ($.cookie('style') == 2) {
+                } else if (localStorage.getItem('style') == 2) {
                     $('.two_name').append(div1 + value + div2);
-                } else if ($.cookie('style') == 3) {
+                } else if (localStorage.getItem('style') == 3) {
                     $('.three_name').append(div1 + value + div2);
-                } else if ($.cookie('style') == 4) {
+                } else if (localStorage.getItem('style') == 4) {
                     $('.four_name').append(div1 + value + div2);
-                } else if ($.cookie('style') == 5) {
+                } else if (localStorage.getItem('style') == 5) {
                     $('.five_name').append(div1 + value + div2);
-                } else if ($.cookie('style') == 6) {
+                } else if (localStorage.getItem('style') == 6) {
                     $('.six_name').append(div1 + value + div2);
                 }
             })
